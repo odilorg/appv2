@@ -2,17 +2,18 @@
 
 namespace App\Filament\Resources\Bookings;
 
-use App\Filament\Resources\Bookings\Pages\CreateBooking;
+use BackedEnum;
+use App\Models\Booking;
+use Filament\Tables\Table;
+use Filament\Schemas\Schema;
+use Filament\Resources\Resource;
+use Filament\Support\Icons\Heroicon;
 use App\Filament\Resources\Bookings\Pages\EditBooking;
 use App\Filament\Resources\Bookings\Pages\ListBookings;
+use App\Filament\Resources\Bookings\Pages\CreateBooking;
 use App\Filament\Resources\Bookings\Schemas\BookingForm;
 use App\Filament\Resources\Bookings\Tables\BookingsTable;
-use App\Models\Booking;
-use BackedEnum;
-use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
-use Filament\Support\Icons\Heroicon;
-use Filament\Tables\Table;
+use App\Filament\Resources\Bookings\RelationManagers\DaysRelationManager;
 
 class BookingResource extends Resource
 {
@@ -33,7 +34,8 @@ class BookingResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+                  DaysRelationManager::class,
+
         ];
     }
 
